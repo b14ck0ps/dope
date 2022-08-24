@@ -34,11 +34,32 @@ class UserController extends Controller
         $customers = Vuser::all();
         return view('users-views')->with(compact('customers'));
     }
+    function trash()
+    {
+        $customers = Vuser::onlyTrashed()->get();
+        return view('users-trash')->with(compact('customers'));
+    }
     function delete($id)
     {
         $customer = Vuser::find($id);
         if (!is_null($customer)) {
             $customer->delete();
+        }
+        return redirect()->route('views');
+    }
+    function fdelete($id)
+    {
+        $customer = Vuser::withTrashed()->find($id);
+        if (!is_null($customer)) {
+            $customer->forceDelete();
+        }
+        return redirect()->route('views');
+    }
+    function restore($id)
+    {
+        $customer = Vuser::withTrashed()->find($id);
+        if (!is_null($customer)) {
+            $customer->restore();
         }
         return redirect()->route('views');
     }
