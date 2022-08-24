@@ -23,7 +23,10 @@ Route::get('/about', [navRoute::class, 'about']);
 Route::get('/register', [UserController::class, 'index']);
 Route::post('/register', [UserController::class, 'register']);
 Route::get('/users/views', [UserController::class, 'views'])->name('views');
+Route::get('/users/trash', [UserController::class, 'trash'])->name('trash');
 Route::get('/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
+Route::get('/users/restore/{id}', [UserController::class, 'restore'])->name('users.restore');
+Route::get('/users/fdelete/{id}', [UserController::class, 'fdelete'])->name('users.forceDelete');
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
 Route::post('/update/{id}', [UserController::class, 'update'])->name('user.update');
 

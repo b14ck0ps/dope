@@ -4,6 +4,7 @@
 @endpush
 @section('main-section')
     <div class="container ">
+        <h6 class="text-right"><a class="text-danger" href="{{ url('/users/trash') }}">Trash List</a></h6>
         <table class="table border">
             <thead>
                 <tr>
@@ -36,7 +37,7 @@
                                 <button type="button" class="btn btn-primary">Edit</button>
                             </a>
                             <a class="ml-3"href="{{ route('users.delete', ['id' => $customer->id]) }}">
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                <button type="button" class="btn btn-warning">Trash</button>
                             </a>
                         </td>
                     </tr>
