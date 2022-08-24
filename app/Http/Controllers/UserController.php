@@ -36,12 +36,12 @@ class UserController extends Controller
         if ($request != '') {
             $customers = Vuser::where('username', 'LIKE', "%$search%")->orWhere('email', 'LIKE', "%$search%")->paginate(10);
         }
-        return view('users-views')->with(compact('customers'));
+        return view('users-views')->with(compact('customers', 'search'));
     }
     function trash()
     {
         $customers = Vuser::onlyTrashed()->get();
-        return view('users-trash')->with(compact('customers', 'search'));
+        return view('users-trash')->with(compact('customers'));
     }
     function delete($id)
     {
