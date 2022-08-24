@@ -6,7 +6,8 @@
     <div class="container ">
         <form action="">
             <div class="form-group d-flex">
-                <input type="text" class="form-control" name="search" placeholder="search by name or email">
+                <input type="text" class="form-control" name="search" placeholder="search by name or email"
+                    value="{{ $search ?? '' }}">
                 <button class="btn btn-primary ml-3">Search</button>
                 <a class=" btn border-dark ml-3 text-decoration-none" href="{{ route('views') }}">Reset</a>
             </div>
@@ -52,5 +53,10 @@
 
             </tbody>
         </table>
+        @if ($customers->hasPages())
+            <div class="d-flex justify-content-center pagination-wrapper">
+                {{ $customers->links() }}
+            </div>
+        @endif
     </div>
 @endsection
