@@ -35,8 +35,6 @@ class UserController extends Controller
         $search = $request->search ?? "";
         if ($request != '') {
             $customers = Vuser::where('username', 'LIKE', "%$search%")->orWhere('email', 'LIKE', "%$search%")->get();
-        } else {
-            $customers = Vuser::all();
         }
         return view('users-views')->with(compact('customers'));
     }
