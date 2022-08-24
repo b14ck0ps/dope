@@ -33,10 +33,10 @@
                         </td>
                         <td>{{ $customer->created_at }}</td>
                         <td>
-                            <a href="{{ route('users.edit', ['id' => $customer->id]) }}">
+                            <a class="text-decoration-none" href="{{ route('users.edit', ['id' => $customer->id]) }}">
                                 <button type="button" class="btn btn-primary">Edit</button>
                             </a>
-                            <a class="ml-3"href="{{ route('users.delete', ['id' => $customer->id]) }}">
+                            <a class="ml-3 text-decoration-none"href="{{ route('users.delete', ['id' => $customer->id]) }}">
                                 <button type="button" class="btn btn-warning">Trash</button>
                             </a>
                         </td>
