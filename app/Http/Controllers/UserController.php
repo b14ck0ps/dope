@@ -29,15 +29,21 @@ class UserController extends Controller
         $customer->save();
         return redirect()->route('views');
     }
-    function views()
+    function views(Request $request)
     {
-        $customers = Vuser::all();
+
+        $search = $request->search ?? "";
+        if ($request != '') {
+            $customers = Vuser::where('username', 'LIKE', "%$search%")->orWhere('email', 'LIKE', "%$search%")->get();
+        } else {
+            $customers = Vuser::all();
+        }
         return view('users-views')->with(compact('customers'));
     }
     function trash()
     {
         $customers = Vuser::onlyTrashed()->get();
-        return view('users-trash')->with(compact('customers'));
+        return view('users-trash')->with(compact('customers', 'search'));
     }
     function delete($id)
     {

@@ -4,6 +4,13 @@
 @endpush
 @section('main-section')
     <div class="container ">
+        <form action="">
+            <div class="form-group d-flex">
+                <input type="text" class="form-control" name="search" placeholder="search by name or email">
+                <button class="btn btn-primary ml-3">Search</button>
+                <a class=" btn border-dark ml-3 text-decoration-none" href="{{ route('views') }}">Reset</a>
+            </div>
+        </form>
         <h6 class="text-right"><a class="text-danger" href="{{ url('/users/trash') }}">Trash List</a></h6>
         <table class="table border">
             <thead>
